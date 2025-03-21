@@ -285,9 +285,8 @@ def testPrediction(groupingFile="",
                     if chromRegion[2] == 0: regionEnd = len(myData.iloc[0, :])
                     regionCoordinates = f"{singleChrom}:{regionStart * binSize}-{regionEnd * binSize}"
 
-                    thisData = myData.iloc[:, regionStart:regionEnd - 1]
-                    thisData["group"] = thisChromSampleLabelList
-
+                    thisData = myData.iloc[:, regionStart:regionEnd - 1].copy()  # Make an explicit copy
+                    thisData.loc[:, "group"] = thisChromSampleLabelList
                     myScores = [getScore(thisData, testSize, randomState, RF_seed) for randomState in
                                 range(totRandomStates)]
                     myScoreChrom.append([regionID] + myScores)
@@ -303,8 +302,8 @@ def testPrediction(groupingFile="",
                     if chromRegion[2] == 0: regionEnd = len(myData.iloc[0, :])
                     regionCoordinates = f"{singleChrom}:{regionStart * binSize}-{regionEnd * binSize}"
 
-                    thisData = myData.iloc[:, regionStart:regionEnd - 1]
-                    thisData["group"] = thisChromSampleLabelList
+                    thisData = myData.iloc[:, regionStart:regionEnd - 1].copy()  # Make an explicit copy
+                    thisData.loc[:, "group"] = thisChromSampleLabelList
 
                     myScores = [getScore(thisData, testSize, randomState, RF_seed) for randomState in
                                 range(totRandomStates)]
@@ -318,8 +317,8 @@ def testPrediction(groupingFile="",
             regionID = f"{singleChrom}_{previousRegionEnd}-{regionEnd * binSize}_Ending"
             regionCoordinates = f"{singleChrom}:{regionStart * binSize}-{regionEnd * binSize}"
 
-            thisData = myData.iloc[:, regionStart:regionEnd - 1]
-            thisData["group"] = thisChromSampleLabelList
+            thisData = myData.iloc[:, regionStart:regionEnd - 1].copy()  # Make an explicit copy
+            thisData.loc[:, "group"] = thisChromSampleLabelList
 
             myScores = [getScore(thisData, testSize, randomState, RF_seed) for randomState in range(totRandomStates)]
             myScoreChrom.append([regionID] + myScores)
