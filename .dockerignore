@@ -1,0 +1,9 @@
+.git
+.gitignore
+.dockerignore
+venv/
+*.pyc
+__pycache__/
+*.env
+README.md
+# Add any other files/folders not needed inside the final image
