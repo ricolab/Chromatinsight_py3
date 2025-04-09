@@ -91,3 +91,5 @@ docker run --rm -e NUM_THREADS=4 chromatinsight:1.0
 - In production environments, consider setting memory and CPU limits appropriately.
 
 This Dockerfile provides a solid foundation for running **Chromatinsight_py3** in any Docker-compatible environment, ensuring consistency and reproducibility for your ChIP-seq data analyses.
+
+You may also find the Docker image in https://hub.docker.com/repository/docker/juanochoteco0/chromatinsight_py3/general
