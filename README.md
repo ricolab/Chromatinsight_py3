@@ -22,3 +22,74 @@ sklearn installed, see https://scikit-learn.org/stable/install.html \
 Quick way to install both:\
 pip install pandas\
 pip install scikit-learn
+
+Sure! Here's the English translation of your text, preserving the technical and practical style:
+
+---
+
+# Dockerfile for Chromatinsight_py3
+
+We’ve created a Dockerfile that allows the application to run in an isolated Docker environment. The Dockerfile includes all necessary dependencies and follows best practices for Docker image creation.
+
+## Usage Instructions
+
+### 1. Build the Docker Image
+
+Clone the repository and build the image:
+
+```bash
+git clone https://github.com/ricolab/Chromatinsight_py3.git
+cd Chromatinsight_py3
+docker build -t chromatinsight:1.0 .
+```
+
+### 2. Run the Container
+
+To run the included unit test:
+
+```bash
+docker run --rm chromatinsight:1.0
+```
+
+### 3. Run Custom Analyses
+
+To run with your own data, mount a volume containing your input files:
+
+```bash
+docker run --rm -v /path/to/your/data:/data chromatinsight:1.0 python /app/your_script.py --input /data/input --output /data/output
+```
+
+Replace `your_script.py` with the script you want to run, adjusting parameters as needed.
+
+### 4. Enter the Container for Interactive Use
+
+```bash
+docker run --rm -it chromatinsight:1.0 /bin/bash
+```
+
+## Possible Customizations
+
+1. **Python Version**: If you need a specific version of Python, change the base image (e.g., `python:3.8-slim`).
+
+2. **Additional Dependencies**: Add more libraries to the `pip install` line if your project requires them.
+
+3. **Persistent Volumes**: For long-running analyses, consider mounting a named volume:
+
+```bash
+docker run --rm -v chromatinsight_data:/data chromatinsight:1.0
+```
+
+4. **Environment Variables**: Use environment variables to configure runtime behavior:
+
+```bash
+docker run --rm -e NUM_THREADS=4 chromatinsight:1.0
+```
+
+## Notes
+
+- The Dockerfile is optimized to balance image size and functionality.
+- Security has been prioritized by running the app as a non-root user.
+- For large datasets, use mounted volumes for input/output to avoid image bloat.
+- In production environments, consider setting memory and CPU limits appropriately.
+
+This Dockerfile provides a solid foundation for running **Chromatinsight_py3** in any Docker-compatible environment, ensuring consistency and reproducibility for your ChIP-seq data analyses.
