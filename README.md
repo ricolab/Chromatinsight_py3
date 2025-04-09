@@ -23,8 +23,6 @@ Quick way to install both:\
 pip install pandas\
 pip install scikit-learn
 
-Sure! Here's the English translation of your text, preserving the technical and practical style:
-
 ---
 
 # Dockerfile for Chromatinsight_py3
